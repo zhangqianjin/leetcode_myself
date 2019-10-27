@@ -1,0 +1,20 @@
+#select sort(简单选择排序)
+
+def Selectsort(arr):
+    
+    for i in range(len(arr)):
+        min = i
+        for j in range(i+1, len(arr)):
+            if arr[min] > arr[j]:
+                min = j
+        if i != min:
+            swap(arr, i, min)
+
+def swap(arr, low, high):
+    temp = arr[low]
+    arr[low] = arr[high]
+    arr[high] = temp
+
+arr = [10,15,2,18,11,3,8,10]
+Selectsort(arr)
+print(arr)
