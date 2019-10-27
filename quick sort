@@ -1,0 +1,31 @@
+#Quick sort(快速排序)
+def Qsort(arr, low, high):
+    pivot = 0
+    if low<high:
+        pivot = partition(arr, low, high)
+        Qsort(arr, low, pivot-1)
+        Qsort(arr, pivot+1, high)
+
+
+def partition(arr, low, high):
+    pivotkey = 0
+    pivotkey = arr[low]
+    while low<high:
+        while low<high and arr[high] >= pivotkey:
+            high -= 1
+        swap(arr, low, high)
+
+        while low<high and arr[low] <= pivotkey:
+            low += 1
+        swap(arr, low, high)
+
+    return low
+
+def swap(arr, low, high):
+    temp = arr[low]
+    arr[low] = arr[high]
+    arr[high] = temp
+
+arr = [10,15,2,18,11,3,8,10]
+Qsort(arr, 0, len(arr) - 1)
+print(arr)
