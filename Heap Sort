@@ -1,0 +1,39 @@
+#Heap Sort 堆排序
+
+# straight insertion sort(直接插入排序)
+def Heapsort(arr):
+    #构造大顶堆
+    for i in range(int(len(arr)/2),-1, -1):
+        HeapAdjust(arr, i, len(arr)-1)
+
+    for i in range(len(arr)-1, 0, -1):
+        #将堆顶记录和当前未经排序子序列的最后一个记录交换
+        swap(arr, 0, i)
+        #将0到i-1个元素重新调整为大顶堆
+        HeapAdjust(arr, 0, i-1)
+
+def HeapAdjust(arr, s, m):
+    temp = arr[s]
+    j = 2*s
+    while j <= m:
+        if j<m and arr[j] < arr[j+1]:
+            j += 1
+        if temp >= arr[j]:
+            break
+        arr[s] = arr[j]
+        s = j
+        j *= 2
+
+    arr[s] = temp
+
+def swap(arr, low, high):
+    temp = arr[low]
+    arr[low] = arr[high]
+    arr[high] = temp
+
+
+arr = [10, 15, 2, 18, 11, 3, 8, 9]
+Heapsort(arr)
+print(arr)
+
+
