@@ -21,7 +21,6 @@ def HeapAdjust(arr, s, m):
         arr[s] = arr[j]
         s = j
         j *= 2
-
     arr[s] = temp
 
 def swap(arr, low, high):
