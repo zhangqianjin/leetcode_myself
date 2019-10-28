@@ -10,9 +10,10 @@ def Heapsort(arr):
         #将0到i-1个元素重新调整为大顶堆
         HeapAdjust(arr, 0, i-1)
 
+#已知arr[s..m]中记录的关键字除arr[s]之外均满足堆的定义，本函数调整arr[s]的关键字，使arr[s]成为一个大顶堆
 def HeapAdjust(arr, s, m):
     temp = arr[s]
-    j = 2*s
+    j = 2*s +1
     while j <= m:
         if j<m and arr[j] < arr[j+1]:
             j += 1
@@ -20,7 +21,7 @@ def HeapAdjust(arr, s, m):
             break
         arr[s] = arr[j]
         s = j
-        j *= 2
+        j = j*2 +1
     arr[s] = temp
 
 def swap(arr, low, high):
@@ -32,5 +33,4 @@ def swap(arr, low, high):
 arr = [10, 15, 2, 18, 11, 3, 8, 9]
 Heapsort(arr)
 print(arr)
-
 
